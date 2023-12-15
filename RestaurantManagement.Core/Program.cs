@@ -6,14 +6,16 @@ namespace RestaurantManagement.Core
     {
         static void Main(string[] args)
         {
-            string[] menuPrincipal = { "Um", "Dois", "Três", "Sair" };
-            Menu opcoes = new Menu(menuPrincipal);
+            Autenticacao.RealizarAutenticacao();
 
-            while (true)
-            {
-                int selecaoUsuario = opcoes.ExibirMenu(Titulo.Principal());
-                AnalisarEscolhasUsuario(selecaoUsuario);
-            }
+            //string[] menuPrincipal = { "Um", "Dois", "Três", "Sair" };
+            //Menu opcoes = new Menu(menuPrincipal);
+
+            //while (true)
+            //{
+            //    int selecaoUsuario = opcoes.ExibirMenu(Titulo.Principal());
+            //    AnalisarEscolhasUsuario(selecaoUsuario);
+            //}
         }
         private static void AnalisarEscolhasUsuario(int selecaoUsuario)
         {

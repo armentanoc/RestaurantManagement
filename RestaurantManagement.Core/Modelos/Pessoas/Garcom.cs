@@ -8,6 +8,6 @@ namespace RestaurantManagement.Core.Modelos.Pessoas
 {
     internal class Garcom : Funcionario
     {
-        public Garcom(string Nome, decimal Salario) : base(Nome, Salario) { }
+        public Garcom(string Nome, string Login, decimal Salario) : base(Nome, Login, Salario) { }
     }
 }

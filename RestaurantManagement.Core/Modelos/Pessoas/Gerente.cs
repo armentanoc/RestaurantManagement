@@ -8,6 +8,6 @@ namespace RestaurantManagement.Core.Modelos.Pessoas
 {
     internal class Gerente : Funcionario
     {
-        public Gerente(string Nome, decimal Salario) : base(Nome, Salario) { }
+        public Gerente(string Nome, string Login, decimal Salario) : base(Nome, Login, Salario) { }
     }
 }

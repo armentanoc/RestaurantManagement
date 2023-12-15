@@ -1,5 +1,6 @@
 ﻿using RestaurantManagement.ConsoleInteraction;
 using RestaurantManagement.Core.Modelos.Pessoas;
+using RestaurantManagement.Core.Servico;
 
 namespace RestaurantManagement.Core
 {

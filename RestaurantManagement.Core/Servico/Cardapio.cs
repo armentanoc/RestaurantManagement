@@ -1,12 +1,12 @@
-﻿using RestaurantManagement.Core.Model.Enum;
-using RestaurantManagement.Core.Model.ItensCardapio;
+﻿using RestaurantManagement.Core.Modelos.Enum;
+using RestaurantManagement.Core.Modelos.ItensCardapio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Core
+namespace RestaurantManagement.Core.Servico
 {
     public static class Cardapio
     {

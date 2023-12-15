@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagement.Core.Modelos.Pessoas
 {
-    internal class Funcionario
+    internal abstract class Funcionario : IFuncionario 
     {
         public string Nome { get; set; }
         public string Login { get; set; }
@@ -18,5 +18,7 @@ namespace RestaurantManagement.Core.Modelos.Pessoas
             Login = Login;
             Salario = Salario;
         }
+
+        public abstract void Greet();
     }
 }

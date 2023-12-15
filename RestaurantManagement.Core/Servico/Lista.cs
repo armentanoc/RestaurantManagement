@@ -1,6 +1,6 @@
 ﻿using RestaurantManagement.Core.Modelos.Pessoas;
 
-namespace RestaurantManagement.Core
+namespace RestaurantManagement.Core.Servico
 {
     internal class Lista
     {
@@ -9,13 +9,13 @@ namespace RestaurantManagement.Core
             List<Funcionario> funcionarios = new List<Funcionario>();
             Funcionario funcionario;
 
-            funcionario = new Funcionario("Carol", "carol", 7000);
+            funcionario = new Garcom("Carol", "carol", 7000);
             funcionarios.Add(funcionario);
 
-            funcionario = new Funcionario("Paula", "paula", 7000);
+            funcionario = new Garcom("Paula", "paula", 7000);
             funcionarios.Add(funcionario);
 
-            funcionario = new Funcionario("Vitória", "vitoria", 7000);
+            funcionario = new Gerente("Vitória", "vitoria", 12000);
             funcionarios.Add(funcionario);
 
             return funcionarios;

@@ -5,7 +5,6 @@ namespace RestaurantManagement.Core
     internal class Autenticacao
     {
         public static List<Funcionario> Funcionarios { get; private set; }
-
         static Autenticacao()
         {
             Funcionarios = new List<Funcionario>
@@ -22,20 +21,14 @@ namespace RestaurantManagement.Core
 
             var funcionario = Funcionarios.Find(f => f.Login == login);
 
-            if (funcionario is Gerente) //funcionario.GetType()
+            Console.WriteLine(funcionario);
+
+            if(funcionario != null)
             {
-                Console.WriteLine("Gerente autenticado");
-            }
-            else if (funcionario is Garcom)
-            {
-                Console.WriteLine("Garçom autenticado");
-            }
-            else
-            {
-                Console.WriteLine("Funcionário não encontrado ou não reconhecido.");
+                funcionario.Greet();
             }
 
-            Thread.Sleep(8000)
+            Thread.Sleep(8000);
         }
     }
 }

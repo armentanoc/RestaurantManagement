@@ -1,9 +1,4 @@
 ﻿using RestaurantManagement.Core.Modelos.Mesas;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RestaurantManagement.Core.Modelos
 {
@@ -36,7 +31,5 @@ namespace RestaurantManagement.Core.Modelos
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

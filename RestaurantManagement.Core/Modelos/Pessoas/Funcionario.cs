@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace RestaurantManagement.Core.Modelos.Pessoas
 {
     internal abstract class Funcionario : IFuncionario 
@@ -12,11 +7,11 @@ namespace RestaurantManagement.Core.Modelos.Pessoas
         public string Login { get; set; }
         public decimal Salario { get; set; }
 
-        public Funcionario(string Nome, string Login, decimal Salario)
+        public Funcionario(string nome, string login, decimal salario)
         {
-            Nome = Nome;
-            Login = Login;
-            Salario = Salario;
+            Nome = nome;
+            Login = login;
+            Salario = salario;
         }
 
         public abstract void Greet();

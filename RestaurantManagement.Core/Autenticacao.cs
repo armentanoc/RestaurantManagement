@@ -1,34 +1,26 @@
-﻿
+﻿using RestaurantManagement.Core.Modelos.Pessoas;
+
 namespace RestaurantManagement.Core
 {
-    using RestaurantManagement.Core.Modelos.Pessoas;
-    internal class Autenticacao
+    internal static class Autenticacao
     {
-        public static List<Funcionario> Funcionarios { get; private set; }
-        static Autenticacao()
-        {
-            Funcionarios = new List<Funcionario>
-            {
-                new Gerente("Maria da Silva", "maria", 5000),
-                new Garcom("Joao Santos", "joao", 2000)
-            };
-        }
-
-        public static void RealizarAutenticacao()
+        public static Funcionario RealizarAutenticacao(List<Funcionario> funcionarios)
         {
             Console.Write("Digite o login: ");
             string login = Console.ReadLine();
 
-            var funcionario = Funcionarios.Find(f => f.Login == login);
-
-            Console.WriteLine(funcionario);
+            var funcionario = funcionarios.Find(f => f.Login == login);
 
             if(funcionario != null)
             {
                 funcionario.Greet();
+            } else {
+                Console.WriteLine("Não há funcionário com esse login. Tente novamente.");
             }
 
-            Thread.Sleep(8000);
+            Thread.Sleep(5000);
+
+            return funcionario;
         }
     }
 }

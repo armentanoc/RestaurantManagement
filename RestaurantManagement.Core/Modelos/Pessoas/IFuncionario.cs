@@ -2,7 +2,6 @@
 {
     internal interface IFuncionario
     {
-
         public void Greet();
 
     }

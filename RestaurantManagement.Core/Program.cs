@@ -1,4 +1,5 @@
 ﻿using RestaurantManagement.ConsoleInteraction;
+using RestaurantManagement.Core.Modelos;
 using RestaurantManagement.Core.Modelos.Pessoas;
 using RestaurantManagement.Core.Servico;
 
@@ -7,6 +8,7 @@ namespace RestaurantManagement.Core
     internal class Program
     {
         static List<Funcionario> funcionarios = Lista.Funcionarios();
+        static List<Pedido> pedidos = new List<Pedido>();
         static void Main(string[] args)
         {
             string[] menuPrincipal = { "Exibir cardápio", "Exibir Funcionários", "Realizar Autenticação", "Sair"};
@@ -32,10 +34,11 @@ namespace RestaurantManagement.Core
                 case 1:
                     Console.WriteLine("Funcionários");
                     ImprimirFuncionarios();
-                    AguardarTresSegundos();
                     break;
                 case 2:
-                    Autenticacao.RealizarAutenticacao();
+                    Funcionario funcionario = Autenticacao.RealizarAutenticacao(funcionarios);
+                    //Pedido pedido = NovoMetodoParaCriarPedido(funcionario);
+                    //pedidos.Add(pedido);
                     break;
                 case 3:
                     Console.WriteLine("Sair");
@@ -54,6 +57,7 @@ namespace RestaurantManagement.Core
             {
                 Console.WriteLine($"{funcionario.Nome} - {funcionario.Salario}");
             }
+            Thread.Sleep(3000);
         }
 
         private static void AguardarTresSegundos()

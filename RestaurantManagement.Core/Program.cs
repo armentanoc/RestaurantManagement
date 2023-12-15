@@ -22,8 +22,10 @@ namespace RestaurantManagement.Core
             switch (selecaoUsuario)
             {
                 case 0:
-                    Console.WriteLine("Cardápio");
-                    //Exibir.Cardapio()
+                    Console.WriteLine("Cardápio"); 
+                    Cardapio.ExibirPratos();
+                    Cardapio.ExibirBebidas();
+                    Thread.Sleep(10000);
                     break;
                 case 1:
                     Console.WriteLine("Funcionários");

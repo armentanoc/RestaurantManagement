@@ -35,7 +35,7 @@ namespace RestaurantManagement.Core
             Console.WriteLine("Bebidas no Cardápio:");
             foreach (var bebida in Bebidas)
             {
-                Console.WriteLine(bebida);
+                Console.WriteLine(bebida.ToString());
             }
         }
 
@@ -44,7 +44,7 @@ namespace RestaurantManagement.Core
             Console.WriteLine("Pratos no Cardápio:");
             foreach (var prato in pratos)
             {
-                Console.WriteLine(prato);
+                Console.WriteLine(prato.ToString());
             }
         }
 

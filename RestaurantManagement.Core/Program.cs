@@ -8,7 +8,7 @@ namespace RestaurantManagement.Core
         static List<Funcionario> funcionarios = Lista.Funcionarios();
         static void Main(string[] args)
         {
-            string[] menuPrincipal = { "Exibir cardápio", "Exibir Funcionários", "Sair"};
+            string[] menuPrincipal = { "Exibir cardápio", "Exibir Funcionários", "Fazer Pedido"};
             Menu opcoes = new Menu(menuPrincipal);
 
             while (true)
@@ -28,7 +28,6 @@ namespace RestaurantManagement.Core
                 case 1:
                     Console.WriteLine("Funcionários");
                     ImprimirFuncionarios();
-                    AguardarTresSegundos();
                     break;
                 case 2:
                     Console.WriteLine("Sair");
@@ -45,8 +44,12 @@ namespace RestaurantManagement.Core
         {
             foreach (Funcionario funcionario in funcionarios)
             {
-                Console.WriteLine($"{funcionario.Nome} - {funcionario.Salario}");
+                Console.WriteLine($"\nNome: {funcionario.Nome}");
+                Console.WriteLine($"Salário: R${funcionario.Salario}");
+                Console.WriteLine($"ID: {funcionario.Id}");
             }
+
+            Thread.Sleep(8000);
         }
 
         private static void AguardarTresSegundos()

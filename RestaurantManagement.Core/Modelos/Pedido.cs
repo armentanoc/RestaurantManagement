@@ -1,17 +1,16 @@
 ﻿using RestaurantManagement.Core.Modelos.Mesas;
-using RestaurantManagement.Core.Modelos.Pagamento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Core.Modelos.Pedido
+namespace RestaurantManagement.Core.Modelos
 {
     internal class Pedido
     {
         public string id { get; set; }
-        private List<Tuple<Item, int>> _itensPedidos;
+        private List<Tuple<dynamic, int>> _itensPedidos;
         private Mesa _mesa;
         private bool _foiEntregue;
         private Pagamento _pagamento;
@@ -23,9 +22,9 @@ namespace RestaurantManagement.Core.Modelos.Pedido
             _foiEntregue = false;
         }
 
-        public void AdicionarItens(Item item, int quantidade)
+        public void AdicionarItens(dynamic item, int quantidade)
         {
-            _itensPedidos.Add(new Tuple<Item, int>(item, quantidade));
+            _itensPedidos.Add(new Tuple<dynamic, int>(item, quantidade));
         }
 
         public void EntregarPedido()

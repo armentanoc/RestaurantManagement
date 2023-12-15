@@ -13,8 +13,8 @@ namespace RestaurantManagement.Core.Modelos.Pessoas
 
         public Funcionario(string Nome, decimal Salario)
         {
-            Nome = Nome;
-            Salario = Salario;
+            this.Nome = Nome;
+            this.Salario = Salario;
         }
     }
 }

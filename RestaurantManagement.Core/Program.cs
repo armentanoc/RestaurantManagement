@@ -9,6 +9,7 @@ namespace RestaurantManagement.Core
         static void Main(string[] args)
         {
             string[] menuPrincipal = { "Exibir cardápio", "Exibir Funcionários", "Realizar Autenticação", "Sair"};
+
             Menu opcoes = new Menu(menuPrincipal);
 
             while (true)

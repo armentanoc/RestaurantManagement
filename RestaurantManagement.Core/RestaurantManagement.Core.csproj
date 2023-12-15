@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Enum\" />
-    <Folder Include="Model\Mesas\" />
-    <Folder Include="Model\ItensCardapio\" />
-    <Folder Include="Model\Pessoas\" />
-    <Folder Include="Service\" />
+    <Folder Include="Modelos\Enum\" />
+    <Folder Include="Modelos\Mesas\" />
+    <Folder Include="Modelos\ItensCardapio\" />
+    <Folder Include="Modelos\Pessoas\" />
+    <Folder Include="Servico\" />
   </ItemGroup>
 
 </Project>

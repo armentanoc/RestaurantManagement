@@ -9,12 +9,14 @@ namespace RestaurantManagement.Core.Modelos.Pessoas
     internal class Funcionario
     {
         public string Nome { get; set; }
+        public string Login { get; set; }
         public decimal Salario { get; set; }
 
-        public Funcionario(string Nome, decimal Salario)
+        public Funcionario(string Nome, string Login, decimal Salario)
         {
-            this.Nome = Nome;
-            this.Salario = Salario;
+            Nome = Nome;
+            Login = Login;
+            Salario = Salario;
         }
     }
 }

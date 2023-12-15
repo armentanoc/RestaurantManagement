@@ -9,13 +9,13 @@ namespace RestaurantManagement.Core
             List<Funcionario> funcionarios = new List<Funcionario>();
             Funcionario funcionario;
 
-            funcionario = new Funcionario("Carol", 7000);
+            funcionario = new Funcionario("Carol", "carol", 7000);
             funcionarios.Add(funcionario);
 
-            funcionario = new Funcionario("Paula", 7000);
+            funcionario = new Funcionario("Paula", "paula", 7000);
             funcionarios.Add(funcionario);
 
-            funcionario = new Funcionario("Vitória", 7000);
+            funcionario = new Funcionario("Vitória", "vitoria", 7000);
             funcionarios.Add(funcionario);
 
             return funcionarios;

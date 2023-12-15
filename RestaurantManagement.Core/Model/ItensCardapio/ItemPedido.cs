@@ -8,18 +8,24 @@ namespace RestaurantManagement.Core.Model.ItensCardapio
 {
     internal class ItemPedido
     {
-        private Produto produto;
-        private int quantidade;
-        private double valorTotal;
-        public ItemPedido(Produto produto, int quantidade) { this.produto = produto; this.quantidade = quantidade; this.CalcularValorTotal(); }
+        public Produto produto { get; private set; }
+        public int Quantidade { get; private set; }
+        public double ValorTotal { get; private set; }
+        public ItemPedido(Produto produto, int quantidade) { this.produto = produto; this.Quantidade = quantidade; this.CalcularValorTotal(); }
 
         private void CalcularValorTotal()
         {
-            this.valorTotal = produto.Preco * quantidade;
+            this.ValorTotal = produto.Preco * Quantidade;
         }
 
         public Produto getProduto() {  return produto; }
-        public int getQuantidade() {  return quantidade; }
-        public double getValorTotal() {  return valorTotal; }
+        public int getQuantidade() {  return Quantidade; }
+        public double getValorTotal() {  return ValorTotal; }
+
+        public void AdicionarMais(int quantidadeAMais)
+        {
+            this.Quantidade += quantidadeAMais;
+            this.CalcularValorTotal();
+        }
     }
 }

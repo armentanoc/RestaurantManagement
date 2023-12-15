@@ -15,4 +15,8 @@
     <Folder Include="Servico\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantManagement.ConsoleInteraction\RestaurantManagement.ConsoleInteraction.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -8,8 +8,7 @@ namespace RestaurantManagement.Core.Model.ItensCardapio
 {
     internal abstract class Produto
     {
-        private decimal _id;
-        public decimal Id { get { return _id; } private set { } }
+        public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set;}
         public double Preco { get; private set;}
@@ -32,11 +31,9 @@ namespace RestaurantManagement.Core.Model.ItensCardapio
             this.Preco = novoPreco;
         }
 
-        private decimal GerarId()
+        private int GerarId()
         {
-            string agora = DateTime.Now.ToString().Replace("/", "").Replace(":", "").Replace(" ", "") ;
-           
-            return decimal.Parse(agora);
+            return Math.Abs(DateTime.Now.GetHashCode());
         }
 
         public abstract override string ToString();

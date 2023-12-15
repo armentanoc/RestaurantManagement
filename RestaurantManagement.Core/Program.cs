@@ -8,7 +8,7 @@ namespace RestaurantManagement.Core
         static List<Funcionario> funcionarios = Lista.Funcionarios();
         static void Main(string[] args)
         {
-            string[] menuPrincipal = { "Exibir cardápio", "Exibir Funcionários", "Sair"};
+            string[] menuPrincipal = { "Exibir cardápio", "Exibir Funcionários", "Realizar Autenticação", "Sair"};
             Menu opcoes = new Menu(menuPrincipal);
 
             while (true)
@@ -33,6 +33,9 @@ namespace RestaurantManagement.Core
                     AguardarTresSegundos();
                     break;
                 case 2:
+                    Autenticacao.RealizarAutenticacao();
+                    break;
+                case 3:
                     Console.WriteLine("Sair");
                     Environment.Exit(0);
                     break;

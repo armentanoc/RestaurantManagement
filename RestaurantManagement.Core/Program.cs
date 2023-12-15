@@ -1,12 +1,14 @@
 ﻿using RestaurantManagement.ConsoleInteraction;
+using RestaurantManagement.Core.Modelos.Pessoas;
 
 namespace RestaurantManagement.Core
 {
     internal class Program
     {
+        static List<Funcionario> funcionarios = Lista.Funcionarios();
         static void Main(string[] args)
         {
-            string[] menuPrincipal = { "Um", "Dois", "Três", "Sair" };
+            string[] menuPrincipal = { "Exibir cardápio", "Exibir Funcionários", "Sair"};
             Menu opcoes = new Menu(menuPrincipal);
 
             while (true)
@@ -20,25 +22,30 @@ namespace RestaurantManagement.Core
             switch (selecaoUsuario)
             {
                 case 0:
-                    Console.WriteLine("Um");
-                    AguardarTresSegundos();
+                    Console.WriteLine("Cardápio");
+                    //Exibir.Cardapio()
                     break;
                 case 1:
-                    Console.WriteLine("Dois");
+                    Console.WriteLine("Funcionários");
+                    ImprimirFuncionarios();
                     AguardarTresSegundos();
                     break;
                 case 2:
-                    Console.WriteLine("Três");
-                    AguardarTresSegundos();
-                    break;
-                case 3:
-                    Console.WriteLine("Programa encerrado");
+                    Console.WriteLine("Sair");
                     Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Opção inválida");
                     AguardarTresSegundos();
                     break;
+            }
+        }
+
+        private static void ImprimirFuncionarios()
+        {
+            foreach (Funcionario funcionario in funcionarios)
+            {
+                Console.WriteLine($"{funcionario.Nome} - {funcionario.Salario}");
             }
         }
 

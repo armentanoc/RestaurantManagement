@@ -1,11 +1,12 @@
 ﻿
 using RestaurantManagement.Core.Modelos.Enum;
+using RestaurantManagement.Core.Modelos.Mesas;
 
 namespace RestaurantManagement.Core.Modelos
 {
     internal class Pagamento
     {
-        public string id { get; set; }
+        public string Id { get; set; }
         private Pedido _pedido;
         private bool _foiPago;
         private decimal _valorTotal;
@@ -14,10 +15,8 @@ namespace RestaurantManagement.Core.Modelos
         public Pagamento(Pedido pedido, TipoPagamento tipoPagamento)
         {
             _pedido = pedido;
-            id = _pedido.id;
+            Id = _pedido.Id;
             _tipoPagamento = tipoPagamento;
         }
-
-
     }
 }

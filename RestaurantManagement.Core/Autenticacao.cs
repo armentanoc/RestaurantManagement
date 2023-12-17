@@ -1,4 +1,5 @@
-﻿using RestaurantManagement.Core.Modelos.Pessoas;
+﻿using RestaurantManagement.ConsoleInteraction;
+using RestaurantManagement.Core.Modelos.Pessoas;
 
 namespace RestaurantManagement.Core
 {
@@ -18,7 +19,7 @@ namespace RestaurantManagement.Core
                 Console.WriteLine("Não há funcionário com esse login. Tente novamente.");
             }
 
-            Thread.Sleep(5000);
+            Menu.AguardarEntrada();
 
             return funcionario;
         }

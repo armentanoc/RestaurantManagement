@@ -1,9 +1,4 @@
 ﻿using RestaurantManagement.Core.Modelos.Enum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RestaurantManagement.Core.Modelos.ItensCardapio
 {
@@ -21,8 +16,8 @@ namespace RestaurantManagement.Core.Modelos.ItensCardapio
         }
         public override string ToString()
         {
-            string ehvegetariano = Vegetariano ? "Prato vegetariano" : "Prato de origem animal";
-            return $"ID {Id} | {Nome} | {Gramas} | R${Preco}\n->{ehvegetariano} | {Categoria.ToString()}";
+            string ehVegetariano = Vegetariano ? "Prato vegetariano" : "Prato de origem animal";
+            return $"ID {Id} | {Nome} | {Gramas}g | R${Preco}\n-> {ehVegetariano} | {Categoria.ToString()}";
         }
 
         public void AlterarQuantidadeGramas(int gramas) { Gramas = gramas; }

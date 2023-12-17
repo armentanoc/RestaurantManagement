@@ -31,6 +31,8 @@
             }
             finally
             {
+                Console.Clear();
+                Console.WriteLine(title);
                 Console.CursorVisible = true;
             }
 

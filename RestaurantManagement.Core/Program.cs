@@ -11,7 +11,7 @@ namespace RestaurantManagement.Core
         static List<Pedido> pedidos = new List<Pedido>();
         static void Main(string[] args)
         {
-            string[] menuPrincipal = { "Exibir cardápio", "Exibir Funcionários", "Realizar Autenticação", "Sair"};
+            string[] menuPrincipal = { "Exibir Cardápio", "Exibir Funcionários", "Realizar Autenticação", "Sair"};
 
             Menu opcoes = new Menu(menuPrincipal);
 
@@ -29,11 +29,12 @@ namespace RestaurantManagement.Core
                     Console.WriteLine("Cardápio"); 
                     Cardapio.ExibirPratos();
                     Cardapio.ExibirBebidas();
-                    Thread.Sleep(10000);
+                    AguardarEntrada();
                     break;
                 case 1:
                     Console.WriteLine("Funcionários");
                     ImprimirFuncionarios();
+                    AguardarEntrada();
                     break;
                 case 2:
                     Funcionario funcionario = Autenticacao.RealizarAutenticacao(funcionarios);
@@ -55,15 +56,20 @@ namespace RestaurantManagement.Core
         {
             foreach (Funcionario funcionario in funcionarios)
             {
-                Console.WriteLine($"{funcionario.Nome} - {funcionario.Salario}");
+                Console.WriteLine($"{funcionario.Nome} - {funcionario.Salario} - {funcionario.GetType().ToString().Remove(0, 42)}");
             }
-            Thread.Sleep(3000);
         }
 
         private static void AguardarTresSegundos()
         {
             Console.CursorVisible = false;
             Thread.Sleep(3000);
+        }
+
+        private static void AguardarEntrada()
+        {
+            Console.WriteLine("\nDigite qualquer tecla para continuar...\n");
+            Console.ReadKey();
         }
     }
 }

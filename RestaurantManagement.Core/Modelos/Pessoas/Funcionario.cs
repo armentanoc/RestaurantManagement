@@ -71,12 +71,15 @@ namespace RestaurantManagement.Core.Modelos.Pessoas
                     {
                         pedido = new Pedido(mesasComClientes[mesaSelecionada]);
                         mesasComClientes[mesaSelecionada].AtualizarPedidoAtual(pedido);
+                        PedidoRepositorio.AdicionarPedido(pedido);   
                     }
 
                     while (EscolherPratoOuBebida(pedido))
                     {
                         Menu.AguardarEntrada();
                     }
+
+                    
                 }
             }
             else

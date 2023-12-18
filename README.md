@@ -22,7 +22,7 @@ Este projeto foi desenvolvido pelo grupo 3 que é composto por:
 
 ## 📫 Descrição do projeto
 
-O tema do projeto consistem em "sistema de gestão de restaurante". O restaurante em questão possui dois tipos de funcionários: garçom e gerente. Todo funcionário pode alocar cliente em mesa, receber um pedido e modificar um pedido. No entanto, somente um gerente pode processar pagamentos. Cada mesa está alocada em uma das áreas do restaurante: área externa ou interna e ela pode ser movida entre áreas. Cada mesa possui pelo menos um pedido associado a ela, que contém produtos e suas quantidades. Há dois tipos de produtos: bebidas e pratos. Todo o cardápio com todas as bebidas e todos os pratos está disponível para todos os usuários do sistema, sem precisar fazer login. As outras opções, no entanto, precisam de login.
+O tema do projeto consistem em "sistema de gestão de restaurante". O restaurante em questão possui dois tipos de funcionários: garçom e gerente. Todo funcionário pode alocar cliente em mesa, receber um pedido e modificar um pedido. No entanto, somente um gerente pode processar pagamentos. Cada mesa está alocada em uma das áreas do restaurante: área externa ou interna e ela pode ser movida entre áreas. Cada mesa possui pelo menos um pedido associado a ela (que precisa conter um pagamento, que pode ser crédito, débito, dinheiro, VR ou VA), que contém produtos e suas quantidades. Há dois tipos de produtos: bebidas e pratos (que podem ser entrada, prato principal ou sobremesa). Todo o cardápio com todas as bebidas e todos os pratos está disponível para todos os usuários do sistema, sem precisar fazer login. As outras opções, no entanto, precisam de login.
 
 ## ⚡ Fluxo aplicado
 

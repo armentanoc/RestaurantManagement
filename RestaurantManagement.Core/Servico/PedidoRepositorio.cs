@@ -1,5 +1,5 @@
 ﻿
-using RestaurantManagement.Core.Modelos.Mesas;
+using RestaurantManagement.Core.Modelos.Pagamentos;
 
 namespace RestaurantManagement.Core.Servico
 {

@@ -1,34 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RestaurantManagement.Core.Modelos.Mesas
+using RestaurantManagement.Core.Modelos;
+using RestaurantManagement.Core.Modelos.ItensCardapio;
+
+
+namespace RestaurantManagement.Core.Modelos.Pagamentos
 {
     internal class Pedido
     {
         public string Id { get; private set; }
-        private List<Tuple<dynamic, int>> _itensPedidos;
-        private readonly Mesa _mesa;
+        private List<ItemPedido> _itensPedidos;
+        private readonly Pagamento _Pagamento;
         private bool _foiEntregue;
         private Pagamento _pagamento;
         private bool _foiPago;
 
-        public Pedido(Mesa mesa)
+        public Pedido(Pagamento Pagamento)
         {
             Id = Guid.NewGuid().ToString();
-            _mesa = mesa;
+            _Pagamento = Pagamento;
             _foiEntregue = false;
-            _itensPedidos = new List<Tuple<dynamic, int>>();
+            _itensPedidos = new List<ItemPedido>();
             _foiPago = false;
         }
 
-        public void AdicionarItens(dynamic item, int quantidade)
+        public void AdicionarItens(Produto item, int quantidade)
         {
             if (_foiPago)
             {
                 throw new InvalidOperationException("Não é possível adicionar itens a um pedido que já foi pago.");
             }
 
-            _itensPedidos.Add(new Tuple<dynamic, int>(item, quantidade));
+            _itensPedidos.Add(new ItemPedido(item, quantidade));
         }
 
         public void EntregarPedido()
@@ -45,7 +49,7 @@ namespace RestaurantManagement.Core.Modelos.Mesas
 
             _pagamento = formaDePagamento;
             _foiPago = true;
-            _mesa.LiberarMesa();
+            _Pagamento.LiberarPagamento();
         }
 
         public override string ToString()
@@ -58,7 +62,6 @@ namespace RestaurantManagement.Core.Modelos.Mesas
             string strItensPedido = "";
             foreach (var item in _itensPedidos)
             {
-                (dynamic produto, int quantidade) = item;
                 strItensPedido += $"\nProduto: {produto.Nome} - Quantidade: {quantidade}";
             }
             return strItensPedido;

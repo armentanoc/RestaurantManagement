@@ -1,4 +1,4 @@
-using RestaurantManagement.Core.Modelos.Pagamentos;
+
 using RestaurantManagement.Core.Modelos;
 
 
@@ -10,7 +10,7 @@ namespace RestaurantManagement.Core.Servico
 
         public static List<Pagamento> Pagamentos()
         {
-            return _Pagamentos;
+            return _pagamentos;
         }
 
         public static void ExibirPagamentos()

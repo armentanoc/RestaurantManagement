@@ -8,14 +8,21 @@ namespace RestaurantManagement.Core
     {
         static void Main(string[] args)
         {
-            string[] menuPrincipal = { "Área Logada", "Cardápio", "Funcionários", "Pagamentos", "Pedidos", "Pagamentos", "Sair"};
+            string[] menuPrincipal = { "Área Logada", "Cardápio", "Funcionários", "Mesas", "Pedidos", "Pagamentos", "Sair"};
 
             Menu opcoes = new Menu(menuPrincipal);
 
-            while (true)
+            try
             {
-                int selecaoUsuario = opcoes.ExibirMenu(Titulo.Principal());
-                AnalisarEscolhasUsuario(selecaoUsuario);
+                while (true)
+                {
+                    int selecaoUsuario = opcoes.ExibirMenu(Titulo.Principal());
+                    AnalisarEscolhasUsuario(selecaoUsuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
         private static void AnalisarEscolhasUsuario(int selecaoUsuario)
@@ -36,7 +43,7 @@ namespace RestaurantManagement.Core
                     Menu.AguardarEntrada();
                     break;
                 case 3:
-                    PagamentoRepositorio.ExibirPagamentos();
+                    MesaRepositorio.ExibirMesas();
                     Menu.AguardarEntrada();
                     break;
                 case 4:

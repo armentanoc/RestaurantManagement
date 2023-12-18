@@ -19,8 +19,6 @@ namespace RestaurantManagement.Core
                 Console.WriteLine("Não há funcionário com esse login. Tente novamente.");
             }
 
-            Menu.AguardarEntrada();
-
             return funcionario;
         }
     }

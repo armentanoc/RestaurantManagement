@@ -18,6 +18,7 @@ namespace RestaurantManagement.Core
                 {
                     int selecaoUsuario = opcoes.ExibirMenu(Titulo.Principal());
                     AnalisarEscolhasUsuario(selecaoUsuario);
+                    Menu.AguardarEntrada();
                 }
             }
             catch (Exception ex)
@@ -31,28 +32,22 @@ namespace RestaurantManagement.Core
             {
                 case 0:
                     Funcionario funcionario = Autenticacao.RealizarAutenticacao(FuncionarioRepositorio.Funcionarios());
-                    PedidoRepositorio.ExibirPedidos();
                     break;
                 case 1:
                     CardapioRepositorio.ExibirPratos();
                     CardapioRepositorio.ExibirBebidas();
-                    Menu.AguardarEntrada();
                     break;
                 case 2:
                     FuncionarioRepositorio.ExibirFuncionarios();
-                    Menu.AguardarEntrada();
                     break;
                 case 3:
                     MesaRepositorio.ExibirMesas();
-                    Menu.AguardarEntrada();
                     break;
                 case 4:
                     PedidoRepositorio.ExibirPedidos();
-                    Menu.AguardarEntrada();
                     break;
                 case 5:
                     PagamentoRepositorio.ExibirPagamentos();
-                    Menu.AguardarEntrada();
                     break;
                 case 6:
                     Console.WriteLine("Sair");
@@ -60,7 +55,6 @@ namespace RestaurantManagement.Core
                     break;
                 default:
                     Console.WriteLine("Opção inválida");
-                    Menu.AguardarEntrada();
                     break;
             }
         }

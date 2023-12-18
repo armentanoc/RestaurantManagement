@@ -1,67 +1,139 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RestaurantManagement.Core.Modelos.Mesas
+using RestaurantManagement.Core.Modelos.Mesas;
+using RestaurantManagement.Core.Modelos.ItensCardapio;
+using RestaurantManagement.Core.Modelos.Enum;
+using RestaurantManagement.Core.Servico;
+using RestaurantManagement.ConsoleInteraction;
+using System.Globalization;
+
+
+namespace RestaurantManagement.Core.Modelos
 {
     internal class Pedido
     {
         public string Id { get; private set; }
-        private List<Tuple<dynamic, int>> _itensPedidos;
-        private readonly Mesa _mesa;
+        private List<ItemPedido> _itensPedidos;
+        public Pagamento? _Pagamento { get; private set; }
         private bool _foiEntregue;
-        private Pagamento _pagamento;
+        private Mesa _mesa;
         private bool _foiPago;
+        public decimal ValorTotal {  get; private set; }
 
         public Pedido(Mesa mesa)
         {
             Id = Guid.NewGuid().ToString();
             _mesa = mesa;
             _foiEntregue = false;
-            _itensPedidos = new List<Tuple<dynamic, int>>();
+            _itensPedidos = new List<ItemPedido>();
             _foiPago = false;
         }
-
-        public void AdicionarItens(dynamic item, int quantidade)
+        public void AdicionarItens(Produto item, int quantidade)
         {
             if (_foiPago)
             {
                 throw new InvalidOperationException("Não é possível adicionar itens a um pedido que já foi pago.");
             }
 
-            _itensPedidos.Add(new Tuple<dynamic, int>(item, quantidade));
+            _itensPedidos.Add(new ItemPedido(item, quantidade));
         }
-
         public void EntregarPedido()
         {
             _foiEntregue = true;
         }
-
-        public void PagarPedido(Pagamento formaDePagamento)
+        public Mesa GetMesa()
         {
-            if (_foiPago)
-            {
-                throw new InvalidOperationException("O pedido já foi pago.");
-            }
-
-            _pagamento = formaDePagamento;
-            _foiPago = true;
-            _mesa.LiberarMesa();
+            return _mesa;
         }
-
-        public override string ToString()
+        public void FecharConta()
         {
-            return $"Pedido {Id}{ExibirItensPedido()}";
+            _Pagamento = new Pagamento(this);
+            PagamentoRepositorio.Pagamentos().Add(_Pagamento);
+            Console.WriteLine(ExibirConta());
+            _Pagamento.SetValorTotal(CalcularValorTotal());
+            Console.WriteLine($"\nTotal: {_Pagamento.ValorTotal.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))}");
         }
-
-        private string ExibirItensPedido()
+        private string ExibirConta()
         {
-            string strItensPedido = "";
+            string strItensPedido = $"\nMesa: {_mesa.Numero}";
             foreach (var item in _itensPedidos)
             {
-                (dynamic produto, int quantidade) = item;
-                strItensPedido += $"\nProduto: {produto.Nome} - Quantidade: {quantidade}";
+                strItensPedido += item.ToString();
             }
+
             return strItensPedido;
+        }
+        private decimal CalcularValorTotal()
+        {
+            decimal valorTotal = 0;
+            foreach (var item in _itensPedidos)
+            {
+                valorTotal += item.CalcularValorTotal();
+            }
+            return valorTotal;
+        }
+        public void ProcessarPagamento()
+        {
+
+            string[] menuOpcoes = System.Enum.GetNames(typeof(TipoPagamento))
+                .Concat(new[] { "Voltar" }).ToArray();
+
+            Menu opcoes = new Menu(menuOpcoes);
+
+            while (true)
+            {
+                Console.Clear();
+                int selecaoGerente = opcoes.ExibirMenu(Titulo.OlaGerente());
+                if (selecaoGerente == (menuOpcoes.Length - 1))
+                {
+                    Console.WriteLine("Retornando ao menu anterior...");
+                    return;
+                }
+                else
+                {
+                    if (_foiPago)
+                    {
+                        Console.WriteLine("O pedido já foi pago.");
+                        return;
+                    } 
+                    else
+                    {
+                        _Pagamento.SetTipoPagamento(menuOpcoes[selecaoGerente]);
+                        this._foiPago = true;
+                        Console.WriteLine($"Pagamento processado.");
+                        _mesa.LiberarMesa();
+                        Console.WriteLine($"Mesa {_mesa.Numero} liberada.");
+                        AtualizarRepositorioDePagamentos(this._Pagamento, _foiPago);
+                        return;
+                    }
+                }
+            }
+        }
+        private void AtualizarRepositorioDePagamentos(Pagamento pagamento, bool foiPago)
+        {
+            var pagamentos = PagamentoRepositorio.Pagamentos();
+            var index = pagamentos.FindIndex(p => p.Id == pagamento.Id);
+            if (index != -1)
+            {
+                pagamento.SetFoiPago(foiPago);  
+                pagamentos[index] = pagamento;
+            }
+        }
+        private string ExibirItensPedido()
+        {
+            string strItensPedido = $"\nMesa: {_mesa.Numero}";
+            foreach (var item in _itensPedidos)
+            {
+                strItensPedido += $"\nProduto: {item.Produto.Nome}" +
+                    $" - Quantidade: {item.Quantidade}";
+            }
+            
+            return strItensPedido;
+        }
+        public override string ToString()
+        {
+            return $"\nPedido {Id}{ExibirItensPedido()}";
         }
     }
 }

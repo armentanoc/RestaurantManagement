@@ -1,5 +1,5 @@
 ﻿
-using RestaurantManagement.Core.Modelos.Mesas;
+using RestaurantManagement.Core.Modelos;
 
 namespace RestaurantManagement.Core.Servico
 {

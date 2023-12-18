@@ -23,7 +23,7 @@ namespace RestaurantManagement.Core.Modelos
         public void ConfirmarPagamento()
         {
             this.FoiPago = true;
-            this.Pedido.Pagamento = this;
+            this.Pedido.PagarPedido(this);
         }
 
         public override string ToString() 

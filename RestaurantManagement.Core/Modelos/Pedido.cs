@@ -17,7 +17,7 @@ namespace RestaurantManagement.Core.Modelos
         private Mesa _mesa;
         private bool _foiPago;
 
-        public Pedido(Mesa mes)
+        public Pedido(Mesa mesa)
         {
             Id = Guid.NewGuid().ToString();
             _mesa = mesa;

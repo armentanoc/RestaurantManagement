@@ -62,7 +62,7 @@ namespace RestaurantManagement.Core.Modelos
                 strItensPedido += $"\n\nProduto: {item.Produto.Nome} " +
                     $"\nValor Unitário: {item.Produto.Preco.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))} " +
                     $"\nQuantidade: {item.Quantidade}" +
-                    $"\nSubtotal: R${item.ValorTotal.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))}";
+                    $"\nSubtotal: {item.ValorTotal.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))}";
             }
 
             return strItensPedido;
@@ -129,7 +129,7 @@ namespace RestaurantManagement.Core.Modelos
             foreach (var item in _itensPedidos)
             {
                 strItensPedido += $"\nProduto: {item.Produto.Nome}" +
-                    $"- Quantidade: {item.Quantidade}";
+                    $" - Quantidade: {item.Quantidade}";
             }
             
             return strItensPedido;

@@ -1,6 +1,6 @@
 ﻿
 using RestaurantManagement.Core.Modelos.Enum;
-using RestaurantManagement.Core.Modelos.Mesas;
+using RestaurantManagement.Core.Modelos.Pagamentos;
 
 namespace RestaurantManagement.Core.Modelos
 {
@@ -23,6 +23,7 @@ namespace RestaurantManagement.Core.Modelos
         public void ConfirmarPagamento()
         {
             this.FoiPago = true;
+            this.Pedido.Pagamento = this;
         }
 
         public override string ToString() 

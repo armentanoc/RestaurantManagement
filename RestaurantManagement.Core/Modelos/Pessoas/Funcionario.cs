@@ -52,25 +52,32 @@ namespace RestaurantManagement.Core.Modelos.Pessoas
         public virtual void ReceberPedido()
         {
             var mesasComClientes = MesaRepositorio.MesasOcupadas().ToArray();
-            var menuMesasComClientes = mesasComClientes.Select(mesa => $"Mesa nº.: {mesa.Numero}").ToArray();
+            var menuMesasComClientes = mesasComClientes.Select(mesa => $"Mesa nº.: {mesa.Numero}").Concat(new[] { "Voltar" }).ToArray();
 
             if (mesasComClientes.Any())
             {
                 Menu opcoes = new Menu(menuMesasComClientes);
                 int mesaSelecionada = opcoes.ExibirMenu(Titulo.Principal());
 
-                Pedido? pedido = mesasComClientes[mesaSelecionada].PedidoAtual;
-
-                if (pedido == null)
+                if (mesaSelecionada == mesasComClientes.Length) // "Voltar" option
                 {
-                    pedido = new Pedido(mesasComClientes[mesaSelecionada]);
-                    mesasComClientes[mesaSelecionada].AtualizarPedidoAtual(pedido);
+                    Console.WriteLine("Retornando ao menu anterior...");
                 }
+                else
+                {
+                    Pedido? pedido = mesasComClientes[mesaSelecionada].PedidoAtual;
 
-                AdicionarPratoOuBebida(pedido);
+                    if (pedido == null)
+                    {
+                        pedido = new Pedido(mesasComClientes[mesaSelecionada]);
+                        mesasComClientes[mesaSelecionada].AtualizarPedidoAtual(pedido);
+                    }
 
-                TentarAdicionarPedido(pedido);
-
+                    while (EscolherPratoOuBebida(pedido))
+                    {
+                        Menu.AguardarEntrada();
+                    }
+                }
             }
             else
             {

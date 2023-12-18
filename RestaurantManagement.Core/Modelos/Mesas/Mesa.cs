@@ -1,27 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RestaurantManagement.Core.Modelos.Mesas
 {
-    public  class Mesa
+    internal class Mesa
     {
-        public int Numero { get; set; }
-        public int QuantidadeCadeiras { get; set; }
-        public bool AreaExterna { get; set; }
+        public int Numero { get; }
+        public int QuantidadeCadeiras { get; }
+        public bool AreaExterna { get; private set; }
+        public bool EstaOcupada { get; private set; }
+        public Pedido PedidoAtual { get; private set; }
 
-        public Mesa(int numero, int quantidadeCadeiras, bool areaExterna) {
+        public Mesa(int numero, int quantidadeCadeiras, bool areaExterna)
+        {
             Numero = numero;
             QuantidadeCadeiras = quantidadeCadeiras;
             AreaExterna = areaExterna;
+            EstaOcupada = false;
         }
 
-        public void LevarAreaExterna()
+        public void LevarAreaExterna() => AreaExterna = true;
+
+        public void AtualizarPedidoAtual(Pedido pedido) => PedidoAtual = pedido;
+
+        public void IniciarNovoPedido()
         {
-            AreaExterna = true;
+            if (!EstaOcupada)
+            {
+                throw new InvalidOperationException("A mesa não está ocupada para iniciar um novo pedido.");
+            }
+
+            PedidoAtual = new Pedido(this);
         }
 
+        public void AlocarClientes() => EstaOcupada = true;
+
+        public Pedido ObterPedidoAtual()
+        {
+            if (!EstaOcupada || PedidoAtual == null)
+            {
+                throw new InvalidOperationException("A mesa não está ocupada ou nenhum pedido foi iniciado.");
+            }
+
+            return PedidoAtual;
+        }
+
+        public void LiberarMesa()
+        {
+            EstaOcupada = false;
+            PedidoAtual = null;
+        }
+
+        public override string ToString() =>
+            $"Mesa nº: {Numero} - Cadeiras: {QuantidadeCadeiras} - Área Externa: {AreaExterna} - Está Ocupada: {EstaOcupada}";
     }
 }

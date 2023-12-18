@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace RestaurantManagement.Core.Modelos.ItensCardapio
 {
     internal class Bebida : Produto
@@ -20,8 +15,8 @@ namespace RestaurantManagement.Core.Modelos.ItensCardapio
 
         public override string ToString()
         {
-            string ehalcoolico = Alcoolico ? "Bebida alcoólica" : "Bebida não alcoólica";
-            return $"ID {Id} | {Nome} | R${Preco}\n->{ehalcoolico} | {Volume} ml";
+            string ehAlcoolico = Alcoolico ? "Bebida alcoólica" : "Bebida não alcoólica";
+            return $"ID {Id} | {Nome} | R${Preco}\n-> {ehAlcoolico} | {Volume} ml";
         }
     }
 }

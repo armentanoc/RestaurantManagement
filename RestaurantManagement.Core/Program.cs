@@ -1,5 +1,4 @@
 ﻿using RestaurantManagement.ConsoleInteraction;
-using RestaurantManagement.Core.Modelos;
 using RestaurantManagement.Core.Modelos.Pessoas;
 using RestaurantManagement.Core.Servico;
 
@@ -7,11 +6,9 @@ namespace RestaurantManagement.Core
 {
     internal class Program
     {
-        static List<Funcionario> funcionarios = Lista.Funcionarios();
-        static List<Pedido> pedidos = new List<Pedido>();
         static void Main(string[] args)
         {
-            string[] menuPrincipal = { "Exibir Cardápio", "Exibir Funcionários", "Realizar Autenticação", "Sair"};
+            string[] menuPrincipal = { "Área Logada", "Cardápio", "Funcionários", "Mesas", "Pedidos", "Pagamentos", "Sair"};
 
             Menu opcoes = new Menu(menuPrincipal);
 
@@ -26,50 +23,40 @@ namespace RestaurantManagement.Core
             switch (selecaoUsuario)
             {
                 case 0:
-                    Console.WriteLine("Cardápio"); 
-                    Cardapio.ExibirPratos();
-                    Cardapio.ExibirBebidas();
-                    AguardarEntrada();
+                    Funcionario funcionario = Autenticacao.RealizarAutenticacao(FuncionarioRepositorio.Funcionarios());
+                    PedidoRepositorio.ExibirPedidos();
                     break;
                 case 1:
-                    Console.WriteLine("Funcionários");
-                    ImprimirFuncionarios();
-                    AguardarEntrada();
+                    CardapioRepositorio.ExibirPratos();
+                    CardapioRepositorio.ExibirBebidas();
+                    Menu.AguardarEntrada();
                     break;
                 case 2:
-                    Funcionario funcionario = Autenticacao.RealizarAutenticacao(funcionarios);
-                    //Pedido pedido = NovoMetodoParaCriarPedido(funcionario);
-                    //pedidos.Add(pedido);
+                    FuncionarioRepositorio.ExibirFuncionarios();
+                    Menu.AguardarEntrada();
                     break;
                 case 3:
+                    MesaRepositorio.ExibirMesas();
+                    Menu.AguardarEntrada();
+                    break;
+                case 4:
+                    PedidoRepositorio.ExibirPedidos();
+                    Menu.AguardarEntrada();
+                    break;
+                case 5:
+                    Console.WriteLine("TBD");
+                    //PagamentoRepositorio.ExibirPagamentos(); ... e lógica subsequente
+                    Menu.AguardarEntrada();
+                    break;
+                case 6:
                     Console.WriteLine("Sair");
                     Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Opção inválida");
-                    AguardarTresSegundos();
+                    Menu.AguardarEntrada();
                     break;
             }
-        }
-
-        private static void ImprimirFuncionarios()
-        {
-            foreach (Funcionario funcionario in funcionarios)
-            {
-                Console.WriteLine($"{funcionario.Nome} - {funcionario.Salario} - {funcionario.GetType().ToString().Remove(0, 42)}");
-            }
-        }
-
-        private static void AguardarTresSegundos()
-        {
-            Console.CursorVisible = false;
-            Thread.Sleep(3000);
-        }
-
-        private static void AguardarEntrada()
-        {
-            Console.WriteLine("\nDigite qualquer tecla para continuar...\n");
-            Console.ReadKey();
         }
     }
 }

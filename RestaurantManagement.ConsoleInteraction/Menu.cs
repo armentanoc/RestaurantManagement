@@ -75,5 +75,22 @@
                     break;
             }
         }
+        public static void AguardarEntrada()
+        {
+            Console.WriteLine("\nDigite qualquer tecla para continuar...\n");
+            Console.ReadKey();
+        }
+
+        public static int LerInteiro(string prompt)
+        {
+            int result;
+
+            do
+            {
+                Console.Write(prompt + " ");
+            } while (!int.TryParse(Console.ReadLine(), out result));
+
+            return result;
+        }
     }
 }

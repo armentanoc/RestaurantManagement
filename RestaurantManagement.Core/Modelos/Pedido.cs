@@ -13,13 +13,13 @@ namespace RestaurantManagement.Core.Modelos.Pagamentos
         private List<ItemPedido> _itensPedidos;
         private readonly Pagamento _Pagamento;
         private bool _foiEntregue;
-        private Pagamento _pagamento;
+        private Mesa _mesa;
         private bool _foiPago;
 
-        public Pedido(Pagamento Pagamento)
+        public Pedido(Mesa mes)
         {
             Id = Guid.NewGuid().ToString();
-            _Pagamento = Pagamento;
+            _mesa = mesa;
             _foiEntregue = false;
             _itensPedidos = new List<ItemPedido>();
             _foiPago = false;

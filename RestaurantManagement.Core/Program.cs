@@ -8,7 +8,7 @@ namespace RestaurantManagement.Core
     {
         static void Main(string[] args)
         {
-            string[] menuPrincipal = { "Área Logada", "Cardápio", "Funcionários", "Mesas", "Pedidos", "Pagamentos", "Sair"};
+            string[] menuPrincipal = { "Área Logada", "Cardápio", "Funcionários", "Pagamentos", "Pedidos", "Pagamentos", "Sair"};
 
             Menu opcoes = new Menu(menuPrincipal);
 
@@ -36,7 +36,7 @@ namespace RestaurantManagement.Core
                     Menu.AguardarEntrada();
                     break;
                 case 3:
-                    MesaRepositorio.ExibirMesas();
+                    PagamentoRepositorio.ExibirPagamentos();
                     Menu.AguardarEntrada();
                     break;
                 case 4:
@@ -44,8 +44,7 @@ namespace RestaurantManagement.Core
                     Menu.AguardarEntrada();
                     break;
                 case 5:
-                    Console.WriteLine("TBD");
-                    //PagamentoRepositorio.ExibirPagamentos(); ... e lógica subsequente
+                    PagamentoRepositorio.ExibirPagamentos();
                     Menu.AguardarEntrada();
                     break;
                 case 6:

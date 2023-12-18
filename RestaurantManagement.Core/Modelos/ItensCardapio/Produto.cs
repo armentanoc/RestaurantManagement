@@ -11,9 +11,9 @@ namespace RestaurantManagement.Core.Modelos.ItensCardapio
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Descricao { get; private set; }
-        public double Preco { get; private set; }
+        public decimal Preco { get; private set; }
 
-        protected Produto(string nome, string descricao, double preco)
+        protected Produto(string nome, string descricao, decimal preco)
         {
             Id = GerarId();
             Nome = nome;
@@ -25,17 +25,14 @@ namespace RestaurantManagement.Core.Modelos.ItensCardapio
         {
             Descricao = novaDescricao;
         }
-
-        public void AtualizarPreco(double novoPreco)
+        public void AtualizarPreco(decimal novoPreco)
         {
             Preco = novoPreco;
         }
-
         private int GerarId()
         {
             return Math.Abs(DateTime.Now.GetHashCode());
         }
-
         public abstract override string ToString();
     }
 }

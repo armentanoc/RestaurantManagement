@@ -3,7 +3,7 @@ namespace RestaurantManagement.Core.Modelos.ItensCardapio
 {
     internal class Bebida : Produto
     {
-        public Bebida(string nome, double volume, bool alcoolico, string descricao, double preco) : base(nome, descricao, preco)
+        public Bebida(string nome, double volume, bool alcoolico, string descricao, decimal preco) : base(nome, descricao, preco)
         {
             Volume = volume;
             Alcoolico = alcoolico;

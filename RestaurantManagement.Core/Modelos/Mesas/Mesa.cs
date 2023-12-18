@@ -8,7 +8,7 @@ namespace RestaurantManagement.Core.Modelos.Mesas
         public int QuantidadeCadeiras { get; }
         public bool AreaExterna { get; private set; }
         public bool EstaOcupada { get; private set; }
-        public Pedido PedidoAtual { get; private set; }
+        public Pedido? PedidoAtual { get; private set; }
 
         public Mesa(int numero, int quantidadeCadeiras, bool areaExterna)
         {

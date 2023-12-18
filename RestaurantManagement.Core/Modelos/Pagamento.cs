@@ -1,6 +1,6 @@
 ﻿
 using RestaurantManagement.Core.Modelos.Enum;
-using RestaurantManagement.Core.Modelos.Pagamentos;
+using System.Globalization;
 
 namespace RestaurantManagement.Core.Modelos
 {
@@ -8,28 +8,41 @@ namespace RestaurantManagement.Core.Modelos
     {
         public string Id { get; set; }
         public Pedido Pedido { get; }
-        public bool FoiPago { get; }
-        public decimal ValorTotal { get; }
+        public bool FoiPago { get; private set; }
+        public decimal ValorTotal { get; private set; }
         private TipoPagamento _tipoPagamento;
 
-        public Pagamento(Pedido pedido, TipoPagamento tipoPagamento)
+        public Pagamento(Pedido pedido)
         {
-            _pedido = pedido;
-            Id = _pedido.Id;
-            _tipoPagamento = tipoPagamento;
-            this.ValorTotal = pedido.ValorTotal;
+            Pedido = pedido;
+            Id = Pedido.Id;
+            ValorTotal = Pedido.ValorTotal;
+        }
+        public void SetFoiPago(bool b)
+        {
+            FoiPago = b;
         }
 
-        public void ConfirmarPagamento()
+        internal void SetValorTotal(decimal valorTotalPedidos)
         {
-            this.FoiPago = true;
-            this.Pedido.PagarPedido(this);
+            ValorTotal = valorTotalPedidos;
         }
 
-        public override string ToString() 
+        internal void SetTipoPagamento(string tipoPagamento)
+        {
+            if (System.Enum.TryParse<TipoPagamento>(tipoPagamento, out TipoPagamento parsedTipoPagamento))
+            {
+                _tipoPagamento = parsedTipoPagamento;
+            }
+            else
+            {
+                Console.WriteLine("Tipo de pagamento inválido.");
+            }
+        }
+        public override string ToString()
         {
             string foiPago = (FoiPago) ? ("APROVADO") : ("AGUARDANDO");
-            return $"Pagamento {Id}\n  referente ao pedido {Pedido.Id}| Status: {foiPago}\nValor total: R$ {ValorTotal} | {_tipoPagamento}\n";
+            return $"\nPagamento {Id} referente ao pedido {Pedido.Id}| Status: {foiPago}\nValor total: {ValorTotal.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))} | Tipo de pagamento: {_tipoPagamento}\n";
 
         }
     }

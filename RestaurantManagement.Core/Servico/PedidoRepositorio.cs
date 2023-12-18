@@ -20,5 +20,10 @@ namespace RestaurantManagement.Core.Servico
                 Console.WriteLine(pedido.ToString() + "\n");
             }
         }
+
+        public static void AdicionarPedido(Pedido pedido)
+        {
+            _pedidos.Add(pedido);
+        }
     }
 }

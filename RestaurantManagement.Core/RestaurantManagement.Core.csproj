@@ -8,10 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Mesas\" />
-    <Folder Include="Model\ItensCardapio\" />
-    <Folder Include="Model\Pessoas\" />
-    <Folder Include="Service\" />
+    <Folder Include="Modelos\Mesas\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantManagement.ConsoleInteraction\RestaurantManagement.ConsoleInteraction.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 
 using RestaurantManagement.Core.Modelos;
+using RestaurantManagement.Core.Modelos.Mesas;
 using RestaurantManagement.Core.Modelos.ItensCardapio;
 
 
-namespace RestaurantManagement.Core.Modelos.Pagamentos
+namespace RestaurantManagement.Core.Modelos
 {
     internal class Pedido
     {

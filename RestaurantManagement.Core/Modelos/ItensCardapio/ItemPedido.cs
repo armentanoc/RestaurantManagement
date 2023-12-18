@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,14 @@ namespace RestaurantManagement.Core.Modelos.ItensCardapio
         {
             Quantidade += quantidadeAMais;
             CalcularValorTotal();
+        }
+
+        public override string ToString()
+        {
+            return $"\n\nProduto: {Produto.Nome} " +
+                    $"\nValor Unitário: {Produto.Preco.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))} " +
+                    $"\nQuantidade: {Quantidade}" +
+                    $"\nSubtotal: {ValorTotal.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))}";
         }
     }
 }

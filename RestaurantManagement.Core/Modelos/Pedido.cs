@@ -59,10 +59,7 @@ namespace RestaurantManagement.Core.Modelos
             string strItensPedido = $"\nMesa: {_mesa.Numero}";
             foreach (var item in _itensPedidos)
             {
-                strItensPedido += $"\n\nProduto: {item.Produto.Nome} " +
-                    $"\nValor Unitário: {item.Produto.Preco.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))} " +
-                    $"\nQuantidade: {item.Quantidade}" +
-                    $"\nSubtotal: {item.ValorTotal.ToString("C", CultureInfo.GetCultureInfo("pt-BR"))}";
+                strItensPedido += item.ToString();
             }
 
             return strItensPedido;

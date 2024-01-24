@@ -93,3 +93,6 @@ Tópicos vistos no módulo que foram aplicados neste projeto:
 - Polimorfismo
 - Propriedades e atributos
 - Git
+
+## 📹 Demo Video
+https://github.com/armentanoc/RestaurantManagement/assets/88147887/7a5dae32-0dc9-42de-8c4a-3cafaaaf80f6
